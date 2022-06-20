@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y zip gunicorn
 ENV LANG C.UTF-8
 RUN pip3 install --upgrade pip
 RUN pip3 install numpy==1.22.4
+RUN pip3 install --upgrade setuptools
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
