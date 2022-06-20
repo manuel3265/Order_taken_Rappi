@@ -1,0 +1,34 @@
+version: '2.3'
+
+services:
+  ordertaken:
+    container_name: ordertaken
+    networks:
+      - local
+    env_file:
+      - /etc/environment
+    build:
+      context: .
+#    runtime: nvidia
+    ports:
+      - 8998:90
+    volumes:
+      - /var/log/order_taken:/var/log/order_taken
+    restart: always
+
+  db:
+    image: mongo:4.0-xenial
+    container_name: order-taken-mongo
+    networks:
+      - local
+    ports:
+      - "9889:27017"
+    volumes:
+      - /mnt/order-taken-mongo-data/data/db:/data/db
+    restart: always
+
+networks:
+  local:
+    driver: bridge
+
+
