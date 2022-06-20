@@ -1,9 +1,9 @@
 FROM python:3.8
-ENV LANG C.UTF-8
-RUN python3.8 -m pip install pip==21.0.1
+ENV LANG C.UTF-
 RUN apt-get update && apt-get install -y zip gunicorn
 # Install requirements
 ENV LANG C.UTF-8
+RUN pip3 install --upgrade pip
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
